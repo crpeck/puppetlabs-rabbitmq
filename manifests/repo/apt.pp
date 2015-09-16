@@ -25,10 +25,14 @@ class rabbitmq::repo::apt(
     location    => $location,
     release     => $release,
     repos       => $repos,
-    include_src => $include_src,
-    key         => $key,
-    key_source  => $key_source,
-    key_content => $key_content,
+    include_src => {
+      'src' => '$include_src',
+    }
+    key         => {
+      id          => $key,
+      key_source  => $key_source,
+      key_content => $key_content,
+    }
   }
 
   if $pin != '' {
